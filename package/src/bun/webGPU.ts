@@ -298,7 +298,7 @@ function findWgpuLibraryPath(): string | null {
 	for (const name of names) {
 		const cwdCandidate = join(process.cwd(), name);
 		if (existsSync(cwdCandidate)) return cwdCandidate;
-		const execDir = dirname(process.execPath);
+		const execDir = join(process.execPath, "..");
 		const macCandidate = join(execDir, "..", "MacOS", name);
 		if (existsSync(macCandidate)) return macCandidate;
 		const resCandidate = join(execDir, "..", "Resources", name);
